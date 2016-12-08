@@ -25,10 +25,10 @@
                 $scope.style = "color:green; border:solid 2.5px green";
                 $scope.text = "Enjoy!";
             }
-            else
+            else {
                 $scope.style = "color:red; border:solid 2.5px red";
                 $scope.text = "Please enter data first";
-
+            }
         };
     }
 })();
