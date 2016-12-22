@@ -30,13 +30,13 @@ function NarrowItDownController(MenuSearchService) {
             var promise = MenuSearchService.getMatchedMenuItems(narrowItems.searchTerm);
             promise.then(function(response) {
                 narrowItems.found = response;
+                if (narrowItems.searchTerm.length==0 || narrowItems.found.length==0) {
+                    narrowItems.showMessage = true;
+                }
             })
             .catch(function (error){
                 console.log("Something is wrong in the getNarrowedItems of NarrowItDownController")
             })
-        }
-        if (!narrowItems.searchTerm || narrowItems.found.length==0) {
-            narrowItems.showMessage = true;
         }
     };
 
@@ -59,9 +59,9 @@ function MenuSearchService($http, ApiBaseUrl) {
                 if (searchTerm!= '' && items[i].description.indexOf(searchTerm)!= -1)
                     foundItems.push(items[i]);
             }
-
-            for (var i=0; i<foundItems.length; i++)
-                console.log(foundItems[i]);
+            //
+            // for (var i=0; i<foundItems.length; i++)
+            //     console.log(foundItems[i]);
             return foundItems;
         });
     }
