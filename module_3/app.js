@@ -30,6 +30,7 @@ function NarrowItDownController(MenuSearchService) {
             var promise = MenuSearchService.getMatchedMenuItems(narrowItems.searchTerm);
             promise.then(function(response) {
                 narrowItems.found = response;
+
                 if (narrowItems.searchTerm.length==0 || narrowItems.found.length==0) {
                     narrowItems.showMessage = true;
                 }
@@ -63,8 +64,8 @@ function MenuSearchService($http, ApiBaseUrl) {
             // for (var i=0; i<foundItems.length; i++)
             //     console.log(foundItems[i]);
             return foundItems;
-        });
-    }
+        })
+    };
 
 }
 })()
