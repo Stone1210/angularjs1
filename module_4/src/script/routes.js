@@ -38,6 +38,10 @@ function RoutesConfig($stateProvider,$urlRouterProvider) {
                 items: ["MenuDataService", "$stateParams",
                     function(MenuDataService, $stateParams) {
                         return MenuDataService.getItemsForCategory($stateParams.category);
+                }],
+                category: ["$stateParams", function($stateParams) {
+                    // console.log($stateParams.category)
+                    return $stateParams.category;
                 }]
             }
         });
